@@ -9,14 +9,14 @@ EventMachine.run {
   @channel = EM::Channel.new
   options = {
     path: '/1.1/statuses/filter.json',
+    # ref: https://dev.twitter.com/docs/streaming-apis/parameters#track
     params: {track: 'ruby'},
     oauth: Settings.oauth
   }
   client = EM::Twitter::Client.connect(options)
   client.each do |tweet|
     # ref: https://dev.twitter.com/docs/platform-objects/tweets
-    tweet = JSON.parse(tweet)
-    @channel.push({op: :tweet, data: tweet}.to_json)
+    @channel.push(%Q({"op": "tweet", "data": #{tweet}}))
   end
 
   EventMachine::WebSocket.start(host: "0.0.0.0", port: 8080, debug: true) do |ws|
