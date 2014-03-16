@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.3.5)
+    buftok (0.2.0)
+    em-twitter (0.3.3)
+      buftok (~> 0.2)
+      eventmachine (~> 1.0)
+      http_parser.rb (~> 0.6)
+      simple_oauth (~> 0.2)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+    eventmachine (1.0.3)
+    http_parser.rb (0.6.0)
+    settingslogic (2.0.9)
+    simple_oauth (0.2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  em-twitter
+  em-websocket
+  settingslogic
