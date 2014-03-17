@@ -1,15 +1,18 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    em-twitter (0.2.2)
+    addressable (2.3.5)
+    buftok (0.2.0)
+    em-twitter (0.3.3)
+      buftok (~> 0.2)
       eventmachine (~> 1.0)
-      http_parser.rb (~> 0.5)
-      simple_oauth (~> 0.1)
-    em-websocket (0.5.0)
+      http_parser.rb (~> 0.6)
+      simple_oauth (~> 0.2)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.5.3)
     eventmachine (1.0.3)
-    http_parser.rb (0.5.3)
+    http_parser.rb (0.6.0)
     redis (3.0.7)
     settingslogic (2.0.9)
     simple_oauth (0.2.0)
@@ -19,6 +22,6 @@ PLATFORMS
 
 DEPENDENCIES
   em-twitter
-  em-websocket (= 0.5.0)
+  em-websocket
   redis
   settingslogic
