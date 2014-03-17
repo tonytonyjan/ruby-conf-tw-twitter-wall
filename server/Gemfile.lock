@@ -1,16 +1,25 @@
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: git://github.com/igrigorik/em-websocket.git
+  revision: d6758b550e8bf3a9d930e04fad0f933526929021
   specs:
-    addressable (2.3.5)
-    buftok (0.2.0)
+    em-websocket (0.5.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
+
+GIT
+  remote: git://github.com/tweetstream/em-twitter.git
+  revision: 5fcc3a06175c2526f5843fade64ba6244c47afc9
+  specs:
     em-twitter (0.3.3)
       buftok (~> 0.2)
       eventmachine (~> 1.0)
       http_parser.rb (~> 0.6)
       simple_oauth (~> 0.2)
-    em-websocket (0.3.8)
-      addressable (>= 2.1.1)
-      eventmachine (>= 0.12.9)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    buftok (0.2.0)
     eventmachine (1.0.3)
     http_parser.rb (0.6.0)
     redis (3.0.7)
@@ -21,7 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  em-twitter
-  em-websocket
+  em-twitter!
+  em-websocket!
   redis
   settingslogic
