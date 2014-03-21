@@ -1,3 +1,3 @@
 class Settings < Settingslogic
-  source File.join(__dir__, 'config.yml')
+  source File.expand_path('../config.yml', __FILE__)
 end
