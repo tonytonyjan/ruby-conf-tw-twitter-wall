@@ -4,11 +4,11 @@ require 'em-twitter'
 require 'json'
 require 'settingslogic'
 require 'settings'
+require 'redis'
 EM.run {
   @channel = EM::Channel.new
   # ref: https://dev.twitter.com/docs/streaming-apis/parameters#track
-  client = EM::Twitter::Client.connect(Settings.twitter)
-  client.each do |tweet|
+  EM::Twitter::Client.connect(Settings.twitter).each do |tweet|
     # ref: https://dev.twitter.com/docs/platform-objects/tweets
     @channel.push(%Q({"op": "tweet", "data": #{tweet}}))
   end
