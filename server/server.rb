@@ -4,7 +4,7 @@ require 'em-twitter'
 require 'json'
 require 'settingslogic'
 require 'settings'
-require 'redis'
+
 EM.run {
   @channel = EM::Channel.new
   # ref: https://dev.twitter.com/docs/streaming-apis/parameters#track
