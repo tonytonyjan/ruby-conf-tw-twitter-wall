@@ -22,7 +22,6 @@ GEM
     buftok (0.2.0)
     eventmachine (1.0.3)
     http_parser.rb (0.6.0)
-    redis (3.0.7)
     settingslogic (2.0.9)
     simple_oauth (0.2.0)
 
@@ -32,5 +31,4 @@ PLATFORMS
 DEPENDENCIES
   em-twitter!
   em-websocket!
-  redis
   settingslogic
