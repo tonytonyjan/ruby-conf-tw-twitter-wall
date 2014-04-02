@@ -1,0 +1,9 @@
+twitter:
+  :path: "/1.1/statuses/filter.json"
+  :params:
+    :track: "ruby"
+  :oauth:
+    :consumer_key:    ""
+    :consumer_secret: ""
+    :token:           ""
+    :token_secret:    ""
