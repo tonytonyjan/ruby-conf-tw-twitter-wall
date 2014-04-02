@@ -5,7 +5,7 @@ $container.masonry({
 });
 
 // load config
-$.ajax('/config.json').done(function(config){
+$.ajax('/config.json', {dataType: "json"}).done(function(config){
   // websocket
   tweets = document.getElementById('tweets');
   (function start(websocketServerLocation){
