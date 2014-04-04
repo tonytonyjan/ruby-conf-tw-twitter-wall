@@ -5,7 +5,6 @@
   <title>Ruby Conf Wall</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <div class="container">
@@ -21,13 +20,14 @@
         <img class="media-object" src="{{user.profile_image_url}}">
       </a>
       <div class="media-body">
-        <h4 class="media-heading">{{user.screen_name}}</h4>
+        <h4 class="media-heading">{{user.screen_name}} <small class="timeago" title="{{created_at}}"></small></h4>
         {{text}}
       </div>
     </div>
   </script>
 
   <script src="js/jquery-2.1.0.min.js"></script>
+  <script src="js/jquery.timeago.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/handlebars-v1.3.0.js"></script>
   <script src="js/main.js"></script>

@@ -2,6 +2,11 @@
 var source = $("#tweet_template").html();
 var template = Handlebars.compile(source);
 
+// timeago
+setInterval(function(){
+  $(".timeago").timeago();
+}, 60000);
+
 // load config
 $.ajax('/config.json', {dataType: "json"}).done(function(config){
   // websocket
@@ -22,6 +27,7 @@ $.ajax('/config.json', {dataType: "json"}).done(function(config){
         img.onload = function(){
           $(html).hide().prependTo('#tweets').slideDown();
           if($('.tweet').length > (config.max_tweet || 5)) $('.tweet').last().remove();
+          $(".timeago").timeago();
         }
         img.src = data.user.profile_image_url;
         break;
