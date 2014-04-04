@@ -14,9 +14,22 @@
     </div>
     <div id="tweets"></div>
   </div>
+
+  <script id="tweet_template" type="text/x-handlebars-template">
+    <div class="media well tweet">
+      <a class="pull-left" href="#">
+        <img class="media-object" src="{{user.profile_image_url}}">
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading">{{user.screen_name}}</h4>
+        {{text}}
+      </div>
+    </div>
+  </script>
+
   <script src="js/jquery-2.1.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/masonry.pkgd.min.js"></script>
+  <script src="js/handlebars-v1.3.0.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

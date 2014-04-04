@@ -5,29 +5,35 @@ require 'json'
 require 'settingslogic'
 require 'settings'
 
-EM.run {
-  @channel = EM::Channel.new
-  # ref: https://dev.twitter.com/docs/streaming-apis/parameters#track
-  EM::Twitter::Client.connect(Settings.twitter).each do |tweet|
-    # ref: https://dev.twitter.com/docs/platform-objects/tweets
-    @channel.push(%Q({"op": "tweet", "data": #{tweet}}))
-  end
-  EM::WebSocket.run(host: "0.0.0.0", port: 8080, debug: true) do |ws|
-    ws.onopen { |handshake|
-      sid = @channel.subscribe { |msg| ws.send msg }
-      puts "##{sid} connected."
-      ws.send({op: :msg, data: 'Welcome!'}.to_json)
+begin
+  EM.run {
+    @channel = EM::Channel.new
+    # ref: https://dev.twitter.com/docs/streaming-apis/parameters#track
+    EM::Twitter::Client.connect(Settings.twitter).each do |tweet|
+      # ref: https://dev.twitter.com/docs/platform-objects/tweets
+      @channel.push(%Q({"op": "tweet", "data": #{tweet}}))
+    end
+    EM::WebSocket.run(host: "0.0.0.0", port: 8080, debug: true) do |ws|
+      ws.onopen { |handshake|
+        sid = @channel.subscribe { |msg| ws.send msg }
+        puts "##{sid} connected."
+        ws.send({op: :msg, data: 'Welcome!'}.to_json)
 
-      ws.onmessage { |msg|
-        @channel.push "<##{sid}>: #{msg}"
+        ws.onmessage { |msg|
+          @channel.push "<##{sid}>: #{msg}"
+        }
+
+        ws.onclose {
+          @channel.unsubscribe(sid)
+          puts "##{sid} closed."
+        }
       }
+    end
 
-      ws.onclose {
-        @channel.unsubscribe(sid)
-        puts "##{sid} closed."
-      }
-    }
-  end
-
-  puts "Server started"
-}
+    puts "Server started"
+  }
+rescue EventMachine::ConnectionError => e
+  $stderr.puts e.message
+  sleep 5
+  retry
+end

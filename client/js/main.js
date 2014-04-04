@@ -1,8 +1,6 @@
-var $container = $('#tweets');
-$container.masonry({
-  itemSelector: '.tweet',
-  gutter: 5
-});
+// handlebar
+var source = $("#tweet_template").html();
+var template = Handlebars.compile(source);
 
 // load config
 $.ajax('/config.json', {dataType: "json"}).done(function(config){
@@ -11,20 +9,19 @@ $.ajax('/config.json', {dataType: "json"}).done(function(config){
   (function start(websocketServerLocation){
     sock = new WebSocket(websocketServerLocation);
     sock.onmessage = function(e) {
-      json = JSON.parse(e.data);
+      var json = JSON.parse(e.data);
       console.debug(json);
       switch(json.op){
       case 'msg':
         break;
       case 'tweet':
-        data = json.data;
-        img = new Image;
+        var data = json.data;
+        var html = template(data);
+        var img = new Image;
         // preload profile image
         img.onload = function(){
-          img.setAttribute('class', 'media-object');
-          tweet = $('<div class="tweet"><div class="media well"><a class="pull-left" href="#"></a><div class="media-body"><h4 class="media-heading">'+data.user.screen_name+'</h4>'+data.text+'</div></div></div>')[0]
-          tweet.querySelector('.media > a').appendChild(img);
-          $container.prepend(tweet).masonry('prepended', tweet);
+          $(html).hide().prependTo('#tweets').slideDown();
+          if($('.tweet').length > (config.max_tweet || 5)) $('.tweet').last().remove();
         }
         img.src = data.user.profile_image_url;
         break;
