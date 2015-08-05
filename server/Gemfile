@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 gem 'em-websocket', github: 'igrigorik/em-websocket'
-gem 'em-twitter', github: 'tweetstream/em-twitter'
+gem 'em-twitter', github: 'chgu82837/em-twitter'
 gem 'settingslogic'

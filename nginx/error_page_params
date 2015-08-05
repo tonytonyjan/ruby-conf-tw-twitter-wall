@@ -1,0 +1,13 @@
+error_page 404 @404;
+error_page 500 502 503 504 @50x;
+proxy_intercept_errors on;
+
+location @404 {
+	root  /usr/share/nginx/html;
+	try_files /404.html =404;
+}
+
+location @50x {
+	root  /usr/share/nginx/html;
+	try_files /50x.html =500;
+}
