@@ -85,7 +85,8 @@ const App = React.createClass({
         var newTweet = this.state.tweets;
         d.data.id = tweet_cnt++;
         newTweet.splice(0,0,d.data);
-        if(newTweet.length > 10) newTweet.splice(10,1);
+        if(newTweet.length > this.state.config.max_tweet)
+          newTweet.splice(this.state.config.max_tweet,1);
         this.setState({tweets: newTweet});
         break;
       default:

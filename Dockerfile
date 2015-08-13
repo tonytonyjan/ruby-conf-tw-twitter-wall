@@ -1,6 +1,6 @@
 # product: -it -p 80:80 -p 8080:8080
 # dev: -it -p 80:80 -p 8080:8080 -v $(pwd)/server/:/server -v $(pwd)/client/:/client
-# dockerRun: -it -p 80:80 -p 8080:8080 -v $(pwd)/server/:/server -v $(pwd)/client/:/client
+# dockerRun: -it -p 80:80 -p 8080:8080
 FROM ruby
 # FROM debian-bash
 
