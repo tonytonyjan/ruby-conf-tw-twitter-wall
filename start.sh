@@ -15,5 +15,5 @@ less +F /root/server.log
 echo "=================== stoping nginx... ==================="
 service nginx stop
 
-echo "=================== stoping nginx... ==================="
+echo "=================== stoping ruby websocket... ==================="
 kill $RUBY_PID

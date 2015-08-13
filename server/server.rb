@@ -5,6 +5,26 @@ require 'json'
 require 'settingslogic'
 require 'settings'
 
+if Settings.babel_transpiler.to_hash[:enabled]
+  require 'babel/transpiler'
+  Encoding.default_external = 'utf-8'
+
+  src_folder = Settings.babel_transpiler.to_hash[:source] || "../client/_src/"
+  tar_folder = Settings.babel_transpiler.to_hash[:target] || "../client/js/"
+  puts "Compiling jsx from '#{src_folder}' to js '#{tar_folder}' ..."
+  Dir[ src_folder + "*.jsx" ].each do |f|
+    result_file = tar_folder + f.split("/")[-1].split(".")[0] + ".js"
+    puts ">> '#{f}' > '#{result_file}'"
+    File.write(
+      result_file,
+      Babel::Transpiler.transform(File.read(f))["code"]
+    )
+  end
+  puts "Compilation OK!"
+end
+
+tweet_track = Settings.twitter.to_hash[:params][:track]
+puts "Starting server for pushing tweet #{tweet_track}"
 begin
   EM.run {
     @channel = EM::Channel.new
@@ -17,7 +37,7 @@ begin
       ws.onopen { |handshake|
         sid = @channel.subscribe { |msg| ws.send msg }
         puts "##{sid} connected."
-        ws.send({op: :msg, data: 'Welcome!'}.to_json)
+        ws.send({op: :msg, data: "Welcome! Now tracking ##{tweet_track}"}.to_json)
 
         ws.onmessage { |msg|
           @channel.push "<##{sid}>: #{msg}"

@@ -1,4 +1,6 @@
-# dockerRun: -it -p 80:80 -p 8080:8080
+# product: -it -p 80:80 -p 8080:8080
+# dev: -it -p 80:80 -p 8080:8080 -v $(pwd)/server/:/server -v $(pwd)/client/:/client
+# dockerRun: -it -p 80:80 -p 8080:8080 -v $(pwd)/server/:/server -v $(pwd)/client/:/client
 FROM ruby
 # FROM debian-bash
 
@@ -15,7 +17,7 @@ wget http://nginx.org/keys/nginx_signing.key -O- | apt-key add - ; \
 echo "deb http://nginx.org/packages/debian/ wheezy nginx" >> /etc/apt/sources.list && \
 echo "deb-src http://nginx.org/packages/debian/ wheezy nginx" >> /etc/apt/sources.list && \
 apt-get update && apt-get -y install \
-nginx less; \
+nginx less nodejs; \
 apt-get clean; \
 rm -fr /etc/nginx; \
 chmod u+x /root/start.sh; \
