@@ -50,15 +50,22 @@ body {
     max-height: 0px;
 }
 .tweet .well {
-    background-color: #FF8686;
+    background-color: #E87099;
     border-radius: 0;
     border-top: 10px solid rgba(255, 255, 255, 0.55);
     border-bottom: 10px solid rgba(0, 0, 0, 0.23);
     border-right: 10px solid rgba(255, 255, 255, 0.17);
     border-left: 10px solid rgba(255, 255, 255, 0.7);
 }
-
 .tweet.done {
     max-height: 400px;
     top: 0;
+}
+
+.tweet .media-heading,.tweet h3,.tweet span {
+    color: white;
+    text-shadow: black 0 0 2px;
+}
+.tweet h3 {
+    font-size: 45px;
 }
