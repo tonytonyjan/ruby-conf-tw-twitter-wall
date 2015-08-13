@@ -5,10 +5,13 @@ const Tweet = React.createClass({
   getInitialState() {
     return {imgReady: false,addedDate: new Date()};
   },
+  showImg() {
+    this.setState({imgReady: true});
+    console.debug(`#${this.props.id} tweet image showed.`);
+  },
   imgReady() {
+    setTimeout(this.showImg,500);
     console.debug(`#${this.props.id} tweet image ready.`);
-    var tweetWrapper = React.findDOMNode(this.refs.tweetWrapper);
-    if(tweetWrapper) tweetWrapper.classList.add("done");
   },
   componentDidMount() {
     console.debug(`#${this.props.id} tweet added.`);

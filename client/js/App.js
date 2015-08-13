@@ -9,10 +9,13 @@ var Tweet = React.createClass({
   getInitialState: function getInitialState() {
     return { imgReady: false, addedDate: new Date() };
   },
+  showImg: function showImg() {
+    this.setState({ imgReady: true });
+    console.debug("#" + this.props.id + " tweet image showed.");
+  },
   imgReady: function imgReady() {
+    setTimeout(this.showImg, 500);
     console.debug("#" + this.props.id + " tweet image ready.");
-    var tweetWrapper = React.findDOMNode(this.refs.tweetWrapper);
-    if (tweetWrapper) tweetWrapper.classList.add("done");
   },
   componentDidMount: function componentDidMount() {
     console.debug("#" + this.props.id + " tweet added.");
