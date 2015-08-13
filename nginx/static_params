@@ -1,0 +1,5 @@
+location ~* \.(ico|css|js|gif|jpe?g|png|html?)(\?.+)?$ {
+    # always use cache, only in production mode
+    expires max;
+    log_not_found off;
+}

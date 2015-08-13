@@ -1,38 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="author" content="簡煒航">
-  <meta name="description" content="毫無反應，只是個推特牆，用於 Ruby Conference Taiwan 2014 的會場。">
-  <meta name="keywords" content="twitter wall,推特牆,Ruby Conf Taiwan 2014">
+  <meta name="author" content="簡煒航,PastLeo">
+  <meta name="description" content="毫無反應，只是個推特牆">
+  <meta name="keywords" content="twitter wall">
   <title>Twitter Wall</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div class="container">
-    <div class="page-header">
-      <h3>Twitter Wall (<a href="">http://goo.gl/kwYOgk</a>) - #rubyconftw #rubyconftw2014 #rubytw <small> by <a href="https://github.com/tonytonyjan/ruby-conf-tw-2014-twitter-wall" target="_blank">@tonytonyjan</a></small></h3>
-    </div>
-    <div id="tweets"></div>
+  <div class="container-fluid header">
+    <h1>
+      Twitter Wall
+      <small>
+        by
+        <a href="https://github.com/tonytonyjan/ruby-conf-tw-2014-twitter-wall" target="_blank">
+          @tonytonyjan
+        </a>
+        and
+        <a href="https://github.com/chgu82837/ruby-conf-tw-2014-twitter-wall" target="_blank">
+          @PastLeo
+        </a>
+      </small>
+    </h1>
   </div>
+  <div id="main"></div>
 
-  <script id="tweet_template" type="text/x-handlebars-template">
-    <div class="media well tweet">
-      <a class="pull-left" href="#">
-        <img class="media-object" src="{{user.profile_image_url}}">
-      </a>
-      <div class="media-body">
-        <h2 class="media-heading">{{user.screen_name}} <small class="timeago" title="{{created_at}}"></small></h2>
-        <h3>{{text}}</h3>
-      </div>
-    </div>
-  </script>
-
-  <script src="js/jquery-2.1.0.min.js"></script>
-  <script src="js/jquery.timeago.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/handlebars-v1.3.0.js"></script>
-  <script src="js/main.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" charset="utf-8"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js" charset="utf-8"></script>
+  <script src="js/TimeAgo.js" charset="utf-8"></script>
+  <script src="js/App.js" charset="utf-8"></script>
 </body>
 </html>

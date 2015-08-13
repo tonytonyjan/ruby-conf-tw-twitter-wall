@@ -7,3 +7,7 @@ twitter:
     :consumer_secret: ""
     :token:           ""
     :token_secret:    ""
+babel_transpiler:
+  :enabled: true
+  :source: "../client/_src/"
+  :target: "../client/js/"
