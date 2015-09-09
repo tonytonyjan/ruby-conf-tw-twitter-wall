@@ -29,7 +29,7 @@ body {
     position: relative;
     z-index: 2;
     background-image: url("http://i.imgur.com/WgHB8kH.png");
-    background-size: 50%;
+    background-size: contain;
     background-repeat: repeat-x;
 }
 
