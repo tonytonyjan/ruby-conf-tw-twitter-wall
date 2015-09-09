@@ -37,7 +37,7 @@ begin
       ws.onopen { |handshake|
         sid = @channel.subscribe { |msg| ws.send msg }
         puts "##{sid} connected."
-        ws.send({op: :msg, data: "Welcome! Now tracking ##{tweet_track}"}.to_json)
+        ws.send({op: :msg, data: "Welcome! Now tracking #{tweet_track}"}.to_json)
 
         ws.onmessage { |msg|
           @channel.push "<##{sid}>: #{msg}"
